@@ -1,0 +1,7 @@
+{
+  "name": "Healio Health Assistant",
+  "description": "A sophisticated, non-diagnostic health assistant that provides general health information and symptom education while prioritizing professional medical consultation.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
