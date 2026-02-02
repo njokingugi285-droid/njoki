@@ -32,7 +32,7 @@ const App: React.FC = () => {
       const data = await analyzeSymptoms(input);
       setResult(data);
     } catch (err) {
-      setError('An error occurred while analyzing your symptoms. Please try again.');
+      setError('Something went sideways while checking your symptoms. Try again, bestie?');
       console.error(err);
     } finally {
       setLoading(false);
@@ -47,7 +47,6 @@ const App: React.FC = () => {
 
   const handleQuestionClick = (question: string) => {
     setInput(prev => prev + (prev.endsWith(' ') ? '' : ' ') + question + ' ');
-    // Smooth scroll back to top of textarea
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -60,15 +59,15 @@ const App: React.FC = () => {
               <i className="fas fa-heartbeat text-xl"></i>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-slate-900 leading-none">Healio</h1>
-              <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Caring Health Guide</p>
+              <h1 className="text-xl font-bold text-slate-900 leading-none">Njoki</h1>
+              <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Your Health Bestie</p>
             </div>
           </div>
           <button 
             onClick={handleReset}
             className="text-slate-500 hover:text-indigo-600 transition-colors text-sm font-medium"
           >
-            New Assessment
+            Start Over
           </button>
         </div>
       </header>
@@ -81,13 +80,13 @@ const App: React.FC = () => {
             <div className="p-6">
               <h2 className="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
                 <i className="fas fa-comment-medical text-indigo-500"></i>
-                Describe what's on your mind...
+                What's the vibe today? Tell me how you're feeling...
               </h2>
               <form onSubmit={handleSubmit} className="relative">
                 <textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="I'm here to listen. Tell me about your symptoms, when they started, and how you feel..."
+                  placeholder="Njoki is here. Spill the tea on your symptoms, when they started, and what's bothering you..."
                   className="w-full h-32 p-4 text-slate-700 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all resize-none"
                   disabled={loading}
                 />
@@ -104,12 +103,12 @@ const App: React.FC = () => {
                     {loading ? (
                       <>
                         <i className="fas fa-wand-magic-sparkles animate-pulse"></i>
-                        Listening...
+                        Njoki is listening...
                       </>
                     ) : (
                       <>
                         <i className="fas fa-paper-plane"></i>
-                        Share with Healio
+                        Let's sort this out
                       </>
                     )}
                   </button>
@@ -141,7 +140,7 @@ const App: React.FC = () => {
                     <section className="bg-amber-50 border border-amber-200 rounded-xl p-5">
                       <h4 className="text-amber-900 font-bold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
                         <i className="fas fa-clipboard-question text-amber-500"></i>
-                        To help me understand better:
+                        Help me help you, bestie:
                       </h4>
                       <div className="space-y-2">
                         {result.questionsToUser.map((q, idx) => (
@@ -163,7 +162,7 @@ const App: React.FC = () => {
                     <section className="bg-rose-50 border border-rose-200 rounded-xl p-5">
                       <h4 className="text-rose-900 font-bold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
                         <i className="fas fa-triangle-exclamation text-rose-500"></i>
-                        Important: Please watch for these
+                        Real Talk: Watch for these!
                       </h4>
                       <ul className="space-y-2">
                         {result.redFlags.map((flag, idx) => (
@@ -180,7 +179,7 @@ const App: React.FC = () => {
                   <section>
                     <h4 className="text-teal-900 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
                       <i className="fas fa-mug-hot text-teal-500"></i>
-                      Care & Comfort at Home
+                      Vibes for Recovery at Home
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {result.homeCareSuggestions?.map((item, idx) => (
@@ -190,16 +189,13 @@ const App: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                    <p className="mt-3 text-[10px] text-slate-400 italic">
-                      Always read the medication label carefully and speak with a pharmacist before taking any OTC medicine.
-                    </p>
                   </section>
 
                   {/* General Info */}
                   <section>
                     <h4 className="text-slate-900 font-bold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
                       <i className="fas fa-info-circle text-slate-400"></i>
-                      General Knowledge
+                      The lowdown on what's happening
                     </h4>
                     <ul className="space-y-2">
                       {result.generalInformation.map((info, idx) => (
@@ -215,9 +211,9 @@ const App: React.FC = () => {
                   <section className="bg-slate-50 rounded-xl p-5">
                     <h4 className="text-slate-900 font-bold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
                       <i className="fas fa-stethoscope text-indigo-400"></i>
-                      Talking to your Professional
+                      Check-in with a real Doctor
                     </h4>
-                    <p className="text-xs text-slate-500 mb-3 italic">It's important to see a doctor for a proper diagnosis. You might want to ask them:</p>
+                    <p className="text-xs text-slate-500 mb-3 italic">Seriously, go see someone. Ask them these:</p>
                     <div className="space-y-2">
                       {result.suggestedQuestionsForDoctor.map((q, idx) => (
                         <div key={idx} className="p-3 bg-white border border-slate-200 rounded-lg text-slate-700 text-sm">
