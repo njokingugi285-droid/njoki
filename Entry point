@@ -1,0 +1,9 @@
+from orchestrator import HealthcareOrchestrator
+
+if __name__ == "__main__":
+    system = HealthcareOrchestrator()
+    user_input = input("Describe your symptoms: ")
+    output = system.run(user_input)
+
+    for key, value in output.items():
+        print(f"\n{key.upper()}:\n{value}")
