@@ -1,0 +1,36 @@
+from agents import (
+    IntakeAgent,
+    SymptomAnalysisAgent,
+    EvidenceAgent,
+    RiskSafetyAgent,
+    RecommendationAgent,
+    FollowUpAgent
+)
+
+class HealthcareOrchestrator:
+    def __init__(self):
+        self.intake = IntakeAgent()
+        self.analysis = SymptomAnalysisAgent()
+        self.evidence = EvidenceAgent()
+        self.safety = RiskSafetyAgent()
+        self.recommendation = RecommendationAgent()
+        self.followup = FollowUpAgent()
+
+    def run(self, user_input):
+        intake_data = self.intake.collect(user_input)
+        analysis = self.analysis.analyze(intake_data)
+        evidence = self.evidence.gather()
+        safety = self.safety.check(intake_data)
+        recommendation = self.recommendation.format(analysis, evidence)
+        followup = self.followup.plan()
+
+        return {
+            "intake": intake_data,
+            "analysis": analysis,
+            "evidence": evidence,
+            "safety": safety,
+            "recommendation": recommendation,
+            "followup": followup,
+            "disclaimer": "This system does NOT provide medical advice."
+        }
+
