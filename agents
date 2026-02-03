@@ -1,0 +1,63 @@
+class IntakeAgent:
+    def collect(self, user_input):
+        return {
+            "symptoms": user_input,
+            "questions": [
+                "How long have you had these symptoms?",
+                "How severe are they (1–10)?",
+                "Any existing medical conditions?",
+                "Any medications currently taken?"
+            ]
+        }
+
+
+class SymptomAnalysisAgent:
+    def analyze(self, intake_data):
+        return {
+            "possible_causes": [
+                "Common viral infection",
+                "Stress-related symptoms",
+                "Dehydration"
+            ],
+            "note": "These are possibilities, not diagnoses."
+        }
+
+
+class EvidenceAgent:
+    def gather(self):
+        return {
+            "sources": [
+                "WHO symptom guidance",
+                "CDC general symptom checker"
+            ]
+        }
+
+
+class RiskSafetyAgent:
+    def check(self, intake_data):
+        red_flags = ["chest pain", "difficulty breathing", "loss of consciousness"]
+        urgent = any(flag in intake_data["symptoms"].lower() for flag in red_flags)
+        return {
+            "urgent": urgent,
+            "message": "Seek immediate medical care if symptoms worsen."
+        }
+
+
+class RecommendationAgent:
+    def format(self, analysis, evidence):
+        return {
+            "education": "Many mild symptoms resolve on their own.",
+            "next_steps": [
+                "Monitor symptoms",
+                "Stay hydrated",
+                "Consult a licensed healthcare professional"
+            ]
+        }
+
+
+class FollowUpAgent:
+    def plan(self):
+        return [
+            "Would you like help preparing questions for a doctor?",
+            "Should we track symptom changes over time?"
+        ]
