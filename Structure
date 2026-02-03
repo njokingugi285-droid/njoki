@@ -1,0 +1,16 @@
+healthcare-multi-agent-gemini/
+│
+├── main.py
+├── agents.py
+├── orchestrator.py
+├── requirements.txt
+├── README.md
+│
+├── demo/
+│   ├── healthcare_demo.ipynb
+│   └── screenshots/
+│       ├── step1_intake.png
+│       ├── step2_analysis.png
+│       └── step3_recommendation.png
+│
+└── reflection.md
