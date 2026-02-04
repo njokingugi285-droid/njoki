@@ -1,0 +1,4 @@
+user_input = "I have a sore throat and mild fever"
+result = system.run(user_input)
+result
+print(result["disclaimer"])
