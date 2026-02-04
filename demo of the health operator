@@ -1,0 +1,11 @@
+
+---
+
+# 4️⃣ Jupyter Demo (`demo/healthcare_demo.ipynb`)
+
+### Notebook Cells Outline
+
+**Cell 1 – Setup**
+```python
+from orchestrator import HealthcareOrchestrator
+system = HealthcareOrchestrator()
