@@ -1,0 +1,24 @@
+### Notebook Cells Outline
+
+**Cell 1 – Setup**
+```python
+from orchestrator import HealthcareOrchestrator
+system = HealthcareOrchestrator()
+user_input = "I have a sore throat and mild fever"
+result = system.run(user_input)
+result
+
+#The multi-agent approach provided significant advantages over a hypothetical single-agent
+system. By separating responsibilities across specialized agents, the system achieved
+greater clarity, safety, and interpretability. Each agent focused on a narrow task, which
+reduced cognitive overload and minimized hallucination risks in a sensitive healthcare
+domain.
+
+Compared to a single agent attempting intake, analysis, safety checks, and recommendations
+simultaneously, the multi-agent design allowed explicit safety validation and structured
+decision points. The Risk & Safety Checker agent was particularly valuable, as it could
+override the flow when urgent symptoms were detected.
+
+Overall, the multi-agent architecture improved modularity, debuggability, and trustworthiness.
+While it introduces coordination overhead, the benefits outweigh the costs in high-risk
+applications such as healthcare advisory systems.
